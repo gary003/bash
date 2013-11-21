@@ -13,7 +13,7 @@ date >> ~/.tempo.txt
 cd ~
 
 ###### gooogle !!!!!!!! ######
-test -e libpeerconnection.log && rm -f libpeerconnection.log 
+test -e libpeerconnection.log && rm -f libpeerconnection.log
 
 # sauvegarde du home
 tar -uvf ~/.sauvegarde.tar $(ls | grep -v -e "^Documents$" -e "^T.*ements$" -e "^workspace$" -e "netbeans-" -e "glassfish-" ) >> .tempo.txt
