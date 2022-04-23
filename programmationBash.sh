@@ -88,7 +88,7 @@ function sumNums() {
   if [[ $# -eq 0 ]];then
     echo "Pass at least 1 parameter"
   else
-    echo "sumNums parameters -> " $@
+    # echo "sumNums parameters -> " $@
     # total is local to the scope of sum()
     local total=0
     for num in $@
@@ -102,4 +102,9 @@ function sumNums() {
 # The $total variable is not reachable outsude sumNums
 test -z $total && echo "Trying to echo a local variable"
 
-sumNums 7 12 6
+s=$(sumNums 7 12 6)
+echo $s
+
+# awk replace string #  "hello     world   ." ----> "hello world ." 
+awk '{gsub(/ +/," "); print}' <<< "hello     world   ." 
+echo "hello     world   ." | awk '{gsub(/ +/," "); print}'
