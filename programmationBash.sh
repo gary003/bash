@@ -87,7 +87,7 @@ echo "sqrt($num1) =  " $(echo "sqrt($num1)" | bc -l)
 function sumNums() {
   echo "sumNums with $# parameters -> " $@ >&2
 
-  test $# -eq 0 && echo "Pass at least 1 parameter" && exit
+  test $# -eq 0 && echo "Error: Pass at least 1 parameter" && exit
   
   # total is local to the scope of sum()
   local total=0
