@@ -85,24 +85,25 @@ echo "sqrt($num1) =  " $(echo "sqrt($num1)" | bc -l)
 # echo "input read is : " $res
 
 function sumNums() {
-  if [[ $# -eq 0 ]];then
-    echo "Pass at least 1 parameter"
-  else
-    # echo "sumNums parameters -> " $@
-    # total is local to the scope of sum()
-    local total=0
-    for num in $@
-    do
-      total=$(($total + $num))
-    done
-    echo $total
-  fi
+  echo "sumNums with $# parameters -> " $@ >&2
+
+  test $# -eq 0 && echo "Pass at least 1 parameter" && exit
+  
+  # total is local to the scope of sum()
+  local total=0
+
+  for num in $@
+  do
+    total=$(($total + $num))
+  done
+
+  echo $total
 }
 
 # The $total variable is not reachable outsude sumNums
 test -z $total && echo "Trying to echo a local variable"
 
-s=$(sumNums 7 12 6)
+s=$(sumNums $num1 $num2)
 echo $s
 
 # awk replace string #  "hello     world   ." ----> "hello world ." 
