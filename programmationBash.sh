@@ -89,9 +89,7 @@ function sumNums() {
 
   test $# -eq 0 && echo "Error: Pass at least 1 parameter" && exit
   
-  # total is local to the scope of sum()
-  local total=0
-
+  total=0
   for num in $@
   do
     total=$(($total + $num))
@@ -101,7 +99,7 @@ function sumNums() {
 }
 
 # The $total variable is not reachable outsude sumNums
-test -z $total && echo "Trying to echo a local variable"
+test -z $total && echo "Trying to echo a local variable" || echo "variable total is reachable: " $total
 
 s=$(sumNums $num1 $num2)
 echo $s
