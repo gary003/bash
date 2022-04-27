@@ -14,6 +14,16 @@ echo -e "Last status in shell 2 + 5 = 32 ? \t -> " $?
 test $((2 + 5)) -eq 7
 echo -e "Last status in shell 2 + 5 = 7 ? \t -> " $?
 
+# Those 3 ways of testing are equals
+if [[ -n $1 ]];then echo "Successful test : "$1 ;fi
+test ! -z $1 && echo "Successful test : "$1
+[ -n $1 ] && echo "Successful test : "$1
+
+# Those 3 ways of testing are equals (multiple expressions tested)
+if [[ -n $1 && $1 -lt 250 ]];then echo "Successful test with multiple expression : " $1 ;fi
+test ! -z $1 && test $1 -lt 250 && echo "Successful test with multiple expression : " $1
+[ -n $1 ] && [ $1 -lt 250 ] && echo "Successful test with multiple expression : " $1
+
 # loop and array push
 arr=()
 for i in {15..3..2}
@@ -21,11 +31,6 @@ do
   arr+=($i)
 done
 echo ""
-
-# Those 3 ways of testing are equals
-if [[ -n $1 ]];then echo $1 ;fi
-test ! -z $1 && echo $1
-[ -n $1 ] && echo $1
 
 # Basic String operation
 str=azerty
