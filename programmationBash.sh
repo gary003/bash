@@ -24,6 +24,11 @@ if [[ -n $1 && $1 -lt 250 ]];then echo "Successful test with multiple expression
 test ! -z $1 && test $1 -lt 250 && echo "Successful test with multiple expression : " $1
 [ -n $1 ] && [ $1 -lt 250 ] && echo "Successful test with multiple expression : " $1
 
+# for (( i = 0; i < $1 ; i=i+1 ))
+# do 
+#   echo $i
+# done
+
 # loop and array push
 arr=()
 for i in {15..3..2}
